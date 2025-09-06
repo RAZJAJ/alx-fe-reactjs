@@ -7,6 +7,25 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import Header from './components/Header';
+import UserProfile from './components/UserProfile';
+import MainContent from './components/MainContent';
+import Footer from './components/Footer';
+import Counter from './components/Counter';  
+function App() {
+  return (
+    <div>
+      <Header />
+      <MainContent />
+      <UserProfile name="AbdulRazaq" age={24} bio="Systems Engineer and React learner" />
+      <Counter /> 
+      <Footer />
+    </div>
+  );
+}
+
+export default App;
+
 
 function App() {
   const [count, setCount] = useState(0)
