@@ -15,7 +15,9 @@ const EditRecipeForm = () => {
   const [description, setDescription] = useState(recipeToEdit?.description || '');
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    // Corrected line: Prevents the browser from reloading the page
+    e.preventDefault(); 
+    
     if (!title || !description || !recipeToEdit) return;
 
     updateRecipe({ ...recipeToEdit, title, description });
