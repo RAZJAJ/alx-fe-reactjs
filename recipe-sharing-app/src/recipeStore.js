@@ -1,10 +1,16 @@
+// src/recipeStore.js
+import { create } from 'zustand';
 
-import create from 'zustand';
-
-const useRecipeStore = create(set => ({
+const useRecipeStore = create((set) => ({
+  // The state properties are defined here
   recipes: [],
-  addRecipe: (newRecipe) => set(state => ({ recipes: [...state.recipes, newRecipe] })),
-  setRecipes: (recipes) => set({ recipes })
+
+  // Actions to modify the state
+  addRecipe: (newRecipe) => set((state) => ({
+    recipes: [...state.recipes, newRecipe],
+  })),
+
+  setRecipes: (recipes) => set({ recipes }),
 }));
 
 export default useRecipeStore;
