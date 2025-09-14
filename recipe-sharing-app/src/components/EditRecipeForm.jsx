@@ -1,5 +1,5 @@
 // src/components/EditRecipeForm.jsx
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import useRecipeStore from '../recipeStore';
 
@@ -11,11 +11,17 @@ const EditRecipeForm = () => {
 
   const recipeToEdit = recipes.find(r => r.id === recipeId);
 
-  const [title, setTitle] = useState(recipeToEdit?.title || '');
-  const [description, setDescription] = useState(recipeToEdit?.description || '');
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
 
+  // Use useEffect to synchronize local state with the Zustand store
+  useEffect(() => {
+    if (recipeToEdit) {
+      setTitle(recipeToEdit.title);
+      setDescription(recipeToEdit.description);
+    }
+  }, [recipeToEdit]); 
   const handleSubmit = (e) => {
-    // Corrected line: Prevents the browser from reloading the page
     e.preventDefault(); 
     
     if (!title || !description || !recipeToEdit) return;
