@@ -1,3 +1,8 @@
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import AddRecipeForm from './components/AddRecipeForm';
+import RecipeList from './components/RecipeList';
+import RecipeDetails from './components/RecipeDetails';
+import EditRecipeForm from './components/EditRecipeForm';
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -41,6 +46,19 @@ function App() {
     </div>
   );
 }
+
+return (
+    <BrowserRouter>
+    
+      <Routes>
+        <Route path="/" element={<RecipeList />} />
+        <Route path="/add-recipe" element={<AddRecipeForm />} />
+        <Route path="/recipes/:recipeId" element={<RecipeDetails />} />
+        <Route path="/edit-recipe/:recipeId" element={<EditRecipeForm />} />
+      </Routes>
+    
+    </BrowserRouter>
+  );
 
 
 
