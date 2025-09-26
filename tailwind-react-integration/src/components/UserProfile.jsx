@@ -13,12 +13,14 @@ function UserProfile() {
                  motion-safe:transition-shadow motion-safe:duration-300 transform"
     >
       <img
-        src="https://via.placeholder.com/150"
-        alt="User avatar of John Doe"
-        className="rounded-full w-24 h-24 md:w-36 md:h-36 mx-auto object-cover
-                   motion-safe:transform motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-in-out
-                   hover:scale-110"
-      />
+  src="https://via.placeholder.com/150"
+  alt="User avatar of John Doe"
+  className="rounded-full sm:w-24 sm:h-24 md:w-36 md:h-36 
+             mx-auto object-cover
+             motion-safe:transform motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-in-out
+             hover:scale-110"
+/>
+
 
       <h1
         tabIndex="0"
