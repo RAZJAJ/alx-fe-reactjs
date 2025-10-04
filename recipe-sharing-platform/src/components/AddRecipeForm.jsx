@@ -6,7 +6,7 @@ const AddRecipeForm = () => {
   const [steps, setSteps] = useState("");
   const [errors, setErrors] = useState({});
 
-  // ✅ Validation function
+  
   const validate = () => {
     const newErrors = {};
 
@@ -14,17 +14,9 @@ const AddRecipeForm = () => {
     if (!ingredients.trim()) newErrors.ingredients = "Ingredients are required.";
     if (!steps.trim()) newErrors.steps = "Preparation steps are required.";
 
-    // Optional: ensure at least two ingredients (comma-separated)
-    const ingredientList = ingredients.split(",").map((item) => item.trim());
-    if (ingredientList.length < 2)
-      newErrors.ingredients = "Please include at least two ingredients (separated by commas).";
+      
 
-    setErrors(newErrors);
-
-    return Object.keys(newErrors).length === 0;
-  };
-
-  // ✅ Handle form submission
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
@@ -37,7 +29,7 @@ const AddRecipeForm = () => {
       console.log("New Recipe Submitted:", newRecipe);
       alert("Recipe submitted successfully!");
 
-      // Clear form
+    
       setTitle("");
       setIngredients("");
       setSteps("");
@@ -72,7 +64,7 @@ const AddRecipeForm = () => {
           )}
         </div>
 
-        {/* Ingredients Field */}
+      
         <div className="mb-4">
           <label className="block text-gray-700 mb-2">Ingredients</label>
           <textarea
@@ -89,5 +81,5 @@ const AddRecipeForm = () => {
           )}
         </div>
 
-        {/* Steps Field */}
+       
         <div className="mb
