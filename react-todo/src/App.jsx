@@ -1,9 +1,12 @@
-import TodoList from './components/TodoList'
+import React from "react";
+import TodoList from "./components/TodoList";
 
-export default function App() {
+function App() {
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="App">
       <TodoList />
     </div>
-  )
+  );
 }
+
+export default App;
