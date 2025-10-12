@@ -1,35 +1,35 @@
-import { render, screen, fireEvent } from "@testing-library/react";
-import "@testing-library/jest-dom";
-import TodoList from "../components/TodoList";
+import { render, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import TodoList from '../components/TodoList';
 
-test("renders initial todos", () => {
+test('renders initial todos', () => {
   render(<TodoList />);
-  expect(screen.getByText(/Learn React/i)).toBeInTheDocument();
-  expect(screen.getByText(/Build a Todo App/i)).toBeInTheDocument();
+  expect(screen.getByText('Learn React')).toBeInTheDocument();
+  expect(screen.getByText('Build a Todo App')).toBeInTheDocument();
 });
 
-test("adds a new todo", () => {
+test('adds a new todo', () => {
   render(<TodoList />);
-  
-  const input = screen.getByPlaceholderText(/Add a todo/i);
-  const addButton = screen.getByText(/Add/i);
+  const input = screen.getByTestId('todo-input');
+  const button = screen.getByText('Add');
 
-  fireEvent.change(input, { target: { value: "Test Todo" } });
-  fireEvent.click(addButton);
+  fireEvent.change(input, { target: { value: 'Test new todo' } });
+  fireEvent.click(button);
 
-  expect(screen.getByText(/Test Todo/i)).toBeInTheDocument();
+  expect(screen.getByText('Test new todo')).toBeInTheDocument();
 });
 
-test("toggles todo completion", () => {
+test('toggles todo completion', () => {
   render(<TodoList />);
-  const todoItem = screen.getByText(/Learn React/i);
+  const todoItem = screen.getByText('Learn React');
   fireEvent.click(todoItem);
-  expect(todoItem).toHaveStyle("text-decoration: line-through");
+  expect(todoItem).toHaveStyle('text-decoration: line-through');
 });
 
-test("deletes a todo", () => {
+test('deletes a todo', () => {
   render(<TodoList />);
-  const deleteButton = screen.getAllByText(/Delete/i)[0];
+  const todoItem = screen.getByText('Build a Todo App');
+  const deleteButton = screen.getAllByText('Delete')[1]; // second one
   fireEvent.click(deleteButton);
-  expect(screen.queryByText(/Learn React/i)).not.toBeInTheDocument();
+  expect(todoItem).not.toBeInTheDocument();
 });
